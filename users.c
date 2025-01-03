@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 typedef struct User {
     char first_name[32];
@@ -7,6 +8,19 @@ typedef struct User {
     char location[64];
     char phone[13];
 } User;
+
+void filter(User users[], int length, char location[]) {
+    puts("Foydalanuvchilar Jadvali");
+    puts("First Name | Last Name | Birth Year | Location  | Phone");
+    puts("------------------------------------------------------");
+
+    for (int i = 0; i < length; i++) {
+        User user = users[i];
+        if (strcmp(user.location, location) == 0) {
+            printf("%-10s | %-9s | %-10d | %-9s | %-5s\n", user.first_name, user.last_name, user.birth_year, user.location, user.phone);
+        }
+    }
+}
 
 int main() {
 
@@ -32,16 +46,7 @@ int main() {
         {"John", "Doe", 1998, "Buxoro", "+998991239090"}
     };
 
-    puts("Foydalanuvchilar Jadvali");
-    puts("First Name | Last Name | Birth Year | Location  | Phone");
-    puts("------------------------------------------------------");
-
-    for (int i = 0; i < 19; i++) {
-        User user = users[i];
-        if (user.birth_year >= 2000) {
-            printf("%-10s | %-9s | %-10d | %-9s | %-5s\n", user.first_name, user.last_name, user.birth_year, user.location, user.phone);
-        }
-    }
+    filter(users, 19, "Toshkent");
 
     return 0;
 }
