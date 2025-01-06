@@ -30,7 +30,7 @@ int main() {
         printf("Published Year: ");
         scanf("%d", &books[i].published_year);
         printf("Author Name: ");
-        scanf(" %s\n", books[i].author.name);
+        scanf(" %[^\n]", books[i].author.name);
         printf("Author Birth Year: ");
         scanf("%d", &books[i].author.birth_year);
     }
